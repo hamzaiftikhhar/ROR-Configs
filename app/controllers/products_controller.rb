@@ -1,6 +1,11 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
-  allow_unauthenticated_access only: %i[ index show ]
+
+  #Before Rails runs the show, edit, update, or destroy action, it calls the set_product method automatically.
+ #Why: These actions need a specific product (@product) to work on. Instead of writing @product = Product.find(params[:id]) in every action, we do it once in a method and call it before the action runs.
+ 
+ 
+ allow_unauthenticated_access only: %i[ index show ]
   def index
     @products = Product.all
   end
@@ -8,7 +13,7 @@ class ProductsController < ApplicationController
   def show
   end
 
-  def new
+  def new                  # It doesn't save anything to the database. It just creates a new instance of the model so Rails form helpers can generate input fields.
     @product = Product.new
   end
 
@@ -40,9 +45,9 @@ class ProductsController < ApplicationController
   end
 
 
-  private
+  private      
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.find(params[:id])  #how this is working?  When a user visits a URL like /products/1, the :id parameter is set to "1". The set_product method uses this parameter to find the corresponding product in the database and assigns it to the @product instance variable. This allows the show, edit, update, and destroy actions to access the specific product that the user is interacting with.
     end
 
     def product_params

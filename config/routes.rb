@@ -1,5 +1,7 @@
 # Rails.application.routes.draw do
 
+
+
 #   # ...
 #   get "/products", to: "products#index"
 
@@ -15,14 +17,18 @@
 #   delete "/products/:id", to: "products#destroy"
 # end
 Rails.application.routes.draw do
-  # resources :products # This simplifies the routing for all CRUD actions for products
+
+
+  # resources :products              # This simplifies the routing for all CRUD actions for products
 
     resource :session
     root "products#index"           #This will allow me to lists all products, and this sets the root URL ("/") to point to the index action of the ProductsController.
-    resources :passwords, param: :token     #
+    resources :passwords, param: :token     # This creates routes for password management, using a token as the parameter for identifying the password reset request.
+      get "clients/new"
+  get "clients/notify"
 
     resources :products do
-      resources :subscribers, only: [ :create ]    
+      resources :subscribers, only: [ :create ]    # You can create a subscriber for a specific product.  Only allows create action (no index, show, etc.).
     #This creates nested routes like: POST /products/:product_id/subscribers  
     # Example: /products/20/subscribers
 
