@@ -23,13 +23,10 @@ Rails.application.routes.draw do
 
     resources :products do
       resources :subscribers, only: [ :create ]  
-    #This creates nested routes like:
-    # POST /products/:product_id/subscribers  
-    # Example:
-    # /products/20/subscribers
+    #This creates nested routes like: POST /products/:product_id/subscribers  
+    # Example: /products/20/subscribers
 
     end
 
     resource :unsubscribe, only: [ :show ]
-
 end 
