@@ -15,7 +15,21 @@
 #   delete "/products/:id", to: "products#destroy"
 # end
 Rails.application.routes.draw do
-  resources :products # This simplifies the routing for all CRUD actions for products
+  # resources :products # This simplifies the routing for all CRUD actions for products
+
     resource :session
-  resources :passwords, param: :token
+    root "products#index"
+    resources :passwords, param: :token
+
+    resources :products do
+      resources :subscribers, only: [ :create ]  
+    #This creates nested routes like:
+    # POST /products/:product_id/subscribers  
+    # Example:
+    # /products/20/subscribers
+
+    end
+
+    resource :unsubscribe, only: [ :show ]
+
 end 
