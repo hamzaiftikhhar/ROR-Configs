@@ -24,7 +24,7 @@ class NotesController < ApplicationController
 
   private
   def note_params
-    params.expect(note: [ :title, :content ])     
+    params.expect(note: [ :title, :description ])     
   end
 end
 

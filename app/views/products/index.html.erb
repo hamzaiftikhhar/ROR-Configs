@@ -3,11 +3,10 @@
 
 <%# <h1>Products</h1> %>
 <%= link_to "New product", new_product_path if authenticated? %> 
-<%= link_to "Login", new_session_path unless authenticated? %>
+<%= link_to "Login", new_session_path unless authenticated? %><br>
+<%= link_to "Notes", notes_path  %>
 <ul>
   <% @products.each do |product| %>
     <li><%= link_to product.name, product_path(product) %></li>
   <% end %>
 </ul>
-
-
