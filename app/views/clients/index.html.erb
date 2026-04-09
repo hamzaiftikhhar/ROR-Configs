@@ -1,0 +1,10 @@
+<h1>Client index</h1>
+
+<%= form_with model: @client do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :email %>
+  <%= f.submit %>
+<% end %>
+
+<p>Name: <%= @client.name %></p>
+<p>Email: <%= @client.email %></p>
