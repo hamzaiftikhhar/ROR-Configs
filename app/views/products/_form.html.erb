@@ -23,6 +23,14 @@
     <%= form.number_field :inventory_count %>
   </div>
 
+  <% flash.each do |type, message| %>
+    <div class="flash <%= type %>">
+      <%= message %>
+    </div>
+  <% end %>
+
+  <%= yield %>
+
   <div>
     <%= form.submit %>
   </div>

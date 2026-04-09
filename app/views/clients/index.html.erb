@@ -1,10 +1,16 @@
-<h1>Client index</h1>
+<h1>Client Form</h1>
 
-<%= form_with model: @client do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :email %>
-  <%= f.submit %>
+<%= form_with url: clients_path, method: :post do %>
+ <%= text_field_tag "client[name]", @client[:name] %>
+<%= text_field_tag "client[email]", @client[:email] %>
+<%= text_field_tag "client[address][city]", @client[:address][:city] %>
+<%= text_field_tag "client[address][postcode]", @client[:address][:postcode] %>
 <% end %>
 
-<p>Name: <%= @client.name %></p>
-<p>Email: <%= @client.email %></p>
+<hr>
+
+<h2>Submitted Data:</h2>
+<p>Name: <%= @client[:name] %></p>
+<p>Email: <%= @client[:email] %></p>
+<p>City: <%= @client.dig(:address, :city) %></p>
+<p>Postcode: <%= @client.dig(:address, :postcode) %></p>

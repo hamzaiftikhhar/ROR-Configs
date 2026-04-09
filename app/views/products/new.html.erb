@@ -1,5 +1,10 @@
 <h1>New product</h1>
 
 <%= render 'form', product: @product %>
-<%= link_to "Cancel", products_path %>. #from where this file will get the product_path? it will get from the products controller, when we click on new product link it will call the new action of products controller and in that action we are initializing the @product variable with Product.new and then we are passing that variable to this form partial.
+<%= link_to "Cancel", products_path %>. 
+
+
+<rb>
+<strong>#from where this file will get the product_path? it will get from the products controller, when we click on new product link it will call the new action of products controller and in that action we are initializing the @product variable with Product.new and then we are passing that variable to this form partial.
+</strong>
     
