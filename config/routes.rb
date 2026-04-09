@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     root "products#index"           #This will allow me to lists all products, and this sets the root URL ("/") to point to the index action of the ProductsController.
     resources :passwords, param: :token     # This creates routes for password management, using a token as the parameter for identifying the password reset request.
     resources :clients
+    resources :notes
   get "clients/notify"
 
     resources :products do
