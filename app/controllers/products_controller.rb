@@ -39,6 +39,15 @@ class ProductsController < ApplicationController
     end
   end
 
+  def feature
+    @product.update(featured: true)
+    redirect_to @product, notice: "Product marked as featured."
+  end
+
+  
+  def search
+    @products = Product.where("name LIKE ?", "%#{params[:q]}%")
+  end
 
 
   def destroy
