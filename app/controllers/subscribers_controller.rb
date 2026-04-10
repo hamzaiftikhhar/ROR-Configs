@@ -10,6 +10,7 @@ class SubscribersController < ApplicationController
   def index
     @subscribers = @product.subscribers
   end
+  
   private
     def set_product
       @product = Product.find(params[:product_id])
@@ -18,4 +19,5 @@ class SubscribersController < ApplicationController
     def subscriber_params
       params.expect(subscriber: [ :email ])
     end
+    
 end

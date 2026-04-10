@@ -16,6 +16,13 @@ class SessionsController < ApplicationController
     end
   end
 
+  def login
+    user_id =10
+    session[:user_id] = user_id
+    render plain: "User loggedin and session stored "
+
+  end
+
   def destroy
     terminate_session
     redirect_to new_session_path, status: :see_other

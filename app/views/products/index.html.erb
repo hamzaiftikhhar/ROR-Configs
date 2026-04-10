@@ -6,6 +6,6 @@
 <%= link_to "Login", new_session_path unless authenticated? %><br>
 <ul>
   <% @products.each do |product| %>
-    <li><%= link_to product.name, product_path(product) %></li>
+    <li><%= link_to product.name, product_path(product) %></li> 
   <% end %>
 </ul>

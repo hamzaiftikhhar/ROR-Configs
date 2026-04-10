@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   # resources :products              # This simplifies the routing for all CRUD actions for products
 
-    resource :session
+    resource :session #why we have used res
     root "products#index"           #This will allow me to lists all products, and this sets the root URL ("/") to point to the index action of the ProductsController.
     resources :passwords, param: :token     # This creates routes for password management, using a token as the parameter for identifying the password reset request.
 
