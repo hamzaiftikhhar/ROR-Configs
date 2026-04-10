@@ -7,6 +7,9 @@ class SubscribersController < ApplicationController
     redirect_to @product, notice: "You are now subscribed."
   end
 
+  def index
+    @subscribers = @product.subscribers
+  end
   private
     def set_product
       @product = Product.find(params[:product_id])

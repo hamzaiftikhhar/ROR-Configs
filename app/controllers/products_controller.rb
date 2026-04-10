@@ -46,7 +46,6 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
-
   private      
     def set_product
       @product = Product.find(params[:id])  #how this is working?  When a user visits a URL like /products/1, the :id parameter is set to "1". The set_product method uses this parameter to find the corresponding product in the database and assigns it to the @product instance variable. This allows the show, edit, update, and destroy actions to access the specific product that the user is interacting with.

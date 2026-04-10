@@ -1,0 +1,12 @@
+
+<%= link_to "Back", @product %>
+<br>
+
+<br>
+<strong>
+<%= @subscribers.count %> subscribers</strong>
+<ul>
+  <% @subscribers.each do |subscriber| %>
+    <li><%= subscriber.email %></li>
+
+  <% end %>

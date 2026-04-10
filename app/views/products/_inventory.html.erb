@@ -1,7 +1,7 @@
 <% if product.inventory_count.positive? %>
   <p><%= product.inventory_count %> in stock</p>
 <% else %>
-  <p>Out of stock</p>
+  <strong><p><%= product.name %> is out of stock</p></strong>
   <p>Email me when available.</p>
 
   <%= form_with model: [product, Subscriber.new] do |form| %>
