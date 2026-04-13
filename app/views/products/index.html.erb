@@ -1,11 +1,26 @@
 <h1><%= t ".title" %></h1>
 
+<%= form_with url: search_products_path, method: :get do %>
+  <%= text_field_tag :q %>
+  <%= submit_tag "Search" %>
+<% end %>
 
 <%# <h1>Products</h1> %>
 <%= link_to "New product", new_product_path if authenticated? %> 
 <%= link_to "Login", new_session_path unless authenticated? %><br>
 <ul>
   <% @products.each do |product| %>
-    <li><%= link_to product.name, product_path(product) %></li> 
+    <li>
+      <%= link_to product.name, product_path(product) %>
+    
+        <%= button_to "Feature",
+        feature_product_path(product),
+        method: :patch %>
+    </li> 
+      
+
+
+  
+  <br>
   <% end %>
-</ul>
+</ul> 

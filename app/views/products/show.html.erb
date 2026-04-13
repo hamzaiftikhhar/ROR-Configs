@@ -12,12 +12,9 @@
     <%= render "inventory", product: @product %>
 
     <% if authenticated? %>
-      <%= link_to "Edit", edit_product_path(@product) %>
+      <%= link_to "Edit", edit_product_path(@product) %><br>
       <%= link_to "Show Subscribers", product_subscribers_path(@product) %>
 
-        <%= link_to "Mark as Featured", 
-        feature_product_path(@product), 
-        method: :patch  %>
 
       <%= button_to "Delete", @product, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
     <% end %>

@@ -40,15 +40,19 @@ class ProductsController < ApplicationController
   end
 
   def feature
-    @product.update(featured: true)
-    redirect_to @product, notice: "Product marked as featured."
+  @product = Product.find(params[:id])
+  @product.update(featured: !@product.featured)
+  flash[:notice] = @product.featured ? "Product marked as featured" : "Product unmarked as featured"
+  redirect_to products_path
   end
 
-  
   def search
-    @products = Product.where("name LIKE ?", "%#{params[:q]}%")
+  if params[:q].present?
+    @products = Product.where("name LIKE ?", "%#{params[:q]}%") #params[:q] is for search query, and the % symbols are wildcards that is use for search functionality. This will return all products whose names contain the search query.
+  else
+    @products = Product.all
   end
-
+  end
 
   def destroy
     @product.destroy
