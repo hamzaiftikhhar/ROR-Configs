@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :passwords, param: :token     # This creates routes for password management, using a token as the parameter for identifying the password reset request.
 
     resources :products do
-      resources :subscribers, only: [ :create, :index]    # nested routes with path parameters. You can create a subscriber for a specific product.  Only allows create action (noshow, etc.).
+      resources :subscribers, only: [ :create]    # nested routes with path parameters. You can create a subscriber for a specific product.  Only allows create action (noshow, etc.).
     #This creates nested routes like: POST /products/:product_id/subscribers  
     # Example: /products/20/subscribers
     
@@ -39,4 +39,10 @@ Rails.application.routes.draw do
       end
     end
     resource :unsubscribe, only: [ :show ]
+    
+    namespace :admin do
+      resources :products do
+        resources :subscribers, only: [:index]
+      end
+    end
 end 

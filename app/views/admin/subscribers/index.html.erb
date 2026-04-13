@@ -1,0 +1,11 @@
+<h1>Product Subscribers</h1>
+
+<%= link_to "Back to Products", products_path %>
+
+<p>
+  Subscribers for updates on Product: <%= @product.name %>
+</p>
+
+<% @subscribers.each do |subscriber| %>
+  <p><%= subscriber.email %></p>
+<% end %>

@@ -2,7 +2,7 @@
   <p><%= product.inventory_count %> in stock</p>
 <% else %>
   <strong><p><%= product.name %> is out of stock</p></strong>
-  <p>Email me when available.</p>
+  <p>Add your email to be notified when available</p>
 
   <%= form_with model: [product, Subscriber.new] do |form| %>
     <%= form.email_field :email, placeholder: "johndoe@gmail.com", required: true %>

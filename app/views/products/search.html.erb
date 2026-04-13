@@ -1,5 +1,13 @@
 <h1>Search Results</h1>
-
+<ul>
 <% @products.each do |product| %>
-  <p><%= product.name %></p>
-<% end %>
+
+  <li>
+  <p><%= link_to product.name, product_path(product) %>
+        <%= button_to "Feature",
+        feature_product_path(product),
+        method: :patch %>
+        </p>
+      </li>
+      <% end %>
+</ul>

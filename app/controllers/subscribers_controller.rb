@@ -21,3 +21,5 @@ class SubscribersController < ApplicationController
     end
     
 end
+
+I want to make the route of hte show subscribers so that admin can only see hte subscribers and not hte other users
