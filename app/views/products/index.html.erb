@@ -10,8 +10,7 @@
 <%= link_to "Login", new_session_path unless authenticated? %><br>
 <ul>
   <% @products.each do |product| %>
-    <li>
-      <%= link_to product.name, product_path(product) %>
+    <li><%= link_to product.name, product %>
     
         <%= button_to "Feature",
         feature_product_path(product),
