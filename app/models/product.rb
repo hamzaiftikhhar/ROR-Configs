@@ -2,6 +2,8 @@ class Product < ApplicationRecord
   include Notifications #Notifications module is included in the Product model, which means that all the methods defined in the Notifications module will be available as instance methods on Product objects. This allows us to keep our code organized and modular, and it also makes it easier to reuse the notification functionality across different models if needed.
 
 
+  has_many :subscriptions
+  has_many :subscribers, through: :subscriptions
 
   has_many :subscribers, dependent: :destroy
   has_one_attached :featured_image
