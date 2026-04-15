@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_15_120924) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_15_125425) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -63,6 +63,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_15_120924) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "manager_id", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.index ["manager_id"], name: "index_employees_on_manager_id"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -119,6 +127,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_15_120924) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "employees", "managers"
   add_foreign_key "sessions", "users"
   add_foreign_key "subscribers", "products"
   add_foreign_key "subscriptions", "products"
