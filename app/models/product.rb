@@ -5,6 +5,8 @@ class Product < ApplicationRecord
   has_many :subscriptions
   has_many :users, through: :subscriptions
 
+  has_many :comments, as: :commentable  #Polymorphic association allows a model to belong to more than one other model on a single association. 
+  
   has_many :subscribers, dependent: :destroy
   has_one_attached :featured_image
 

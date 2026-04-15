@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :email_address, presence: true
   end
 
+  has_many :comments, as: :commentable 
   
   has_secure_password
   has_many :sessions, dependent: :destroy
