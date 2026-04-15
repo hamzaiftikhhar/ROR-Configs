@@ -3,7 +3,7 @@ class Product < ApplicationRecord
 
 
   has_many :subscriptions
-  has_many :subscribers, through: :subscriptions
+  has_many :users, through: :subscriptions
 
   has_many :subscribers, dependent: :destroy
   has_one_attached :featured_image

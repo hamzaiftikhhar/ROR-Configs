@@ -31,11 +31,11 @@ Rails.application.routes.draw do
 
     resources :products do
       resources :subscribers, only: [ :create] # nested routes with path parameters. You can create a subscriber for a specific product.  Only allows create action (noshow, etc.).
-    #This creates nested routes like: POST /products/:product_id/subscribers  
-    # Example: /products/20/subscribers
+      #This creates nested routes like: POST /products/:product_id/subscribers  
+      # Example: /products/20/subscribers
     
 
-    #Add More RESTful Routes
+      #Add More RESTful Routes
       member do
         patch "feature" # This adds a custom member route for the "feature" action, which will be accessible via PATCH /products/:id/feature. This allows you to mark a specific product as featured. 
       end 
