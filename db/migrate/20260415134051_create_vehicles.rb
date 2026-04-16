@@ -9,3 +9,4 @@ class CreateVehicles < ActiveRecord::Migration[8.1]
     end
   end
 end
+
