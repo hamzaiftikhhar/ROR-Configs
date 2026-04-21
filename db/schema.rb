@@ -49,12 +49,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_15_134051) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "clients", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "email"
-    t.string "name"
-    t.datetime "updated_at", null: false
-  end
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -63,21 +57,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_15_134051) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
-  end
-
-  create_table "employees", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.integer "manager_id", null: false
-    t.string "name"
-    t.datetime "updated_at", null: false
-    t.index ["manager_id"], name: "index_employees_on_manager_id"
-  end
-
-  create_table "notes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.text "description"
-    t.string "title"
-    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -135,7 +114,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_15_134051) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "employees", "managers"
   add_foreign_key "sessions", "users"
   add_foreign_key "subscribers", "products"
   add_foreign_key "subscriptions", "products"
