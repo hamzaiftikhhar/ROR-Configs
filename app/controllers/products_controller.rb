@@ -63,6 +63,14 @@ class ProductsController < ApplicationController
     def set_product
       @product = Product.find(params[:id])  #how this is working?  When a user visits a URL like /products/1, the :id parameter is set to "1". The set_product method uses this parameter to find the corresponding product in the database and assigns it to the @product instance variable. This allows the show, edit, update, and destroy actions to access the specific product that the user is interacting with.
     end
+    def set_product
+    @product = Product.find_by(id: params[:id])
+    
+      unless @product
+      redirect_to products_path, alert: "Product not found"
+      end
+    end
+    
 
     def product_params
       params.expect(product: [ :name, :description , :featured_image , :inventory_count])

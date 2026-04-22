@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :comments, as: :commentable 
   
-  has_secure_password #
+  has_secure_password 
   has_many :sessions, dependent: :destroy
 
   has_many :subscriptions
