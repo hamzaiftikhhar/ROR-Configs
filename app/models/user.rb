@@ -1,8 +1,12 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
   with_options if: :admin? do
   validates :password, length: { minimum: 10 }
-  validates :email_address, presence: true
+  validates :email, presence: true
   end
 
   has_many :comments, as: :commentable 
@@ -13,7 +17,7 @@ class User < ApplicationRecord
   has_many :subscriptions
   has_many :products, through: :subscriptions   # we are using the 
 
-  validates :email_address, uniqueness: true
-  normalizes :email_address, with: ->(e) { e.strip.downcase }  
+  validates :email, uniqueness: true
+  normalizes :email, with: ->(e) { e.strip.downcase }  
 
 end
