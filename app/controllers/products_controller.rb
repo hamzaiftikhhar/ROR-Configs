@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
+  
 
   #Before Rails runs the show, edit, update, or destroy action, it calls the set_product method automatically.
  #Why: These actions need a specific product (@product) to work on. Instead of writing @product = Product.find(params[:id]) in every action, we do it once in a method and call it before the action runs.
  
  
- allow_unauthenticated_access only: %i[ index show ]
+  skip_before_action :authenticate_user!, only: %i[index show]
   def index
     @products = Product.all
   end

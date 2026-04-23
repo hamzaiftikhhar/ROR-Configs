@@ -6,8 +6,11 @@
 <% end %>
 
 <%# <h1>Products</h1> %>
-<%= link_to "New product", new_product_path if authenticated? %> 
-<%= link_to "Login", new_session_path unless authenticated? %><br>
+<% if user_signed_in? %>
+  <%= link_to "New product", new_product_path %>
+<% else %>
+  <%= link_to "Login", new_user_session_path %>
+<% end %>
 <ul>
   <% @products.each do |product| %>
     <li><%= link_to product.name, product %>
@@ -16,7 +19,7 @@
         feature_product_path(product),
         method: :patch %>
     </li> 
-      
+
 
 
   

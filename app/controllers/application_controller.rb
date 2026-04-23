@@ -1,15 +1,8 @@
 class ApplicationController < ActionController::Base
-  include Authentication
-  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
-  allow_browser versions: :modern
+  before_action :authenticate_user!
 
-  # Changes to the importmap will invalidate the etag for HTML responses
-  stale_when_importmap_changes
-
-    around_action :switch_locale
-
-  def switch_locale(&action)
-    locale = params[:locale] || I18n.default_locale
-    I18n.with_locale(locale, &action)
+  # Optional: only keep this if you actually use I18n switching
+  def switch_locale
+    I18n.locale = session[:locale] || I18n.default_locale
   end
 end

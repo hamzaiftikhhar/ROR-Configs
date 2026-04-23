@@ -11,7 +11,7 @@
 
     <%= render "inventory", product: @product %>
 
-    <% if authenticated? && Current.user&.admin?%>
+    <% if user_signed_in? && Current.user&.admin?%>
       <%= link_to "Edit", [:edit, @product] %><br> 
       <%= link_to "Show Subscribers", admin_product_subscribers_path(@product) %><br> 
       <%= button_to "Delete", @product, method: :delete, data: { turbo_confirm: "Are you sure?" } %>

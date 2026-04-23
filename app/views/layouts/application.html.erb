@@ -28,10 +28,15 @@
     <main>
     <%= yield %>
     </main>
-     <nav>
-      <%= link_to "Home", root_path %>
-      <%= button_to "Log out", session_path, method: :delete if authenticated? %>
-    </nav>
+<nav>
+  <%= link_to "Home", root_path %>
+
+  <% if user_signed_in? %>
+    <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Login", new_user_session_path %>
+  <% end %>
+</nav>
 
     <div class="notice"><%= flash[:notice] %></div>
     <div class="alert"><%= flash[:alert] %></div>

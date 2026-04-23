@@ -1,33 +1,13 @@
-# Rails.application.routes.draw do
-  devise_for :users
-
-
-
-#   # ...
-#   get "/products", to: "products#index"
-
-#   get "/products/new", to: "products#new"
-#   post "/products", to: "products#create"
-
-#   get "/products/:id", to: "products#show"
-
-#   get "/products/:id/edit", to: "products#edit"
-#   patch "/products/:id", to: "products#update"
-#   put "/products/:id", to: "products#update"
-
-#   delete "/products/:id", to: "products#destroy"
-# end
-
 Rails.application.routes.draw do
+
+
     root "products#index"  
+    devise_for :users
 
     concern :subscribable_index_only do
       resources :subscribers, only: [:index]
     end
 
-  # resources :products              # This simplifies the routing for all CRUD actions for products
-    resource :session
-         #This will allow me to lists all products, and this sets the root URL ("/") to point to the index action of the ProductsController.
     resources :passwords, param: :token     # This creates routes for password management, using a token as the parameter for identifying the password reset request.
 
     resources :products do
@@ -55,3 +35,22 @@ Rails.application.routes.draw do
     #   resources :products, concerns: :subscribable_index_only
     # end
 end 
+
+# Rails.application.routes.draw do
+
+
+
+#   # ...
+#   get "/products", to: "products#index"
+
+#   get "/products/new", to: "products#new"
+#   post "/products", to: "products#create"
+
+#   get "/products/:id", to: "products#show"
+
+#   get "/products/:id/edit", to: "products#edit"
+#   patch "/products/:id", to: "products#update"
+#   put "/products/:id", to: "products#update"
+
+#   delete "/products/:id", to: "products#destroy"
+# end
