@@ -1,37 +1,39 @@
 <%= form_with model: product do |form| %>
   <% if form.object.errors.any? %>
-    <p class="error"><%= form.object.errors.full_messages.first %></p>
+    <div class="alert alert-danger">
+      <%= form.object.errors.full_messages.first %>
+    </div>
   <% end %>
 
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.rich_textarea :description %>
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.rich_textarea :description, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :featured_image, style: "display: block" %>
-    <%= form.file_field :featured_image, accept: "image/*" %>
+  <div class="mb-3">
+    <%= form.label :featured_image, class: "form-label" %>
+    <%= form.file_field :featured_image, accept: "image/*", class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :inventory_count, style: "display: block" %>
-    <%= form.number_field :inventory_count %>
+  <div class="mb-3">
+    <%= form.label :inventory_count, class: "form-label" %>
+    <%= form.number_field :inventory_count, class: "form-control" %>
   </div>
 
   <% flash.each do |type, message| %>
-    <div class="flash <%= type %>">
+    <div class="alert alert-<%= type == 'notice' ? 'success' : 'danger' %>">
       <%= message %>
     </div>
   <% end %>
 
   <%= yield %>
 
-  <div>
-    <%= form.submit %>
+  <div class="d-grid">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -1,13 +1,17 @@
-<h1>Search Results</h1>
-<ul>
-<% @products.each do |product| %>
-
-  <li>
-  <p><%= link_to product.name, product_path(product) %>
-        <%= button_to "Feature",
-        feature_product_path(product),
-        method: :patch %>
-        </p>
-      </li>
-      <% end %>
-</ul>
+<div class="container mt-4">
+  <h1 class="mb-4">Search Results</h1>
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title"><%= link_to product.name, product_path(product), class: "text-decoration-none" %></h5>
+            <div class="mt-auto">
+              <%= button_to "Feature", feature_product_path(product), method: :patch, class: "btn btn-outline-primary btn-sm" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

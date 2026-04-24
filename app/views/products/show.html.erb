@@ -1,21 +1,46 @@
-<p><%= link_to "Back", products_path %></p> 
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <%= link_to "Back to Products", products_path, class: "btn btn-secondary mb-3" %>
+    </div>
+  </div>
 
-<section class="product">
-  <%= image_tag @product.featured_image if @product.featured_image.attached? %>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <% if @product.featured_image.attached? %>
+            <div class="text-center mb-3">
+              <%= image_tag @product.featured_image, class: "img-fluid rounded" %>
+            </div>
+          <% end %>
 
-  <section class="product-info">
-    <% cache @product do %>
-      <h1><%= @product.name %></h1>
-      <%= @product.description %>
-    <% end %>
+          <% cache @product do %>
+            <h1 class="card-title"><%= @product.name %></h1>
+            <p class="card-text"><%= @product.description %></p>
+          <% end %>
 
-    <%= render "inventory", product: @product %>
+          <%= render "inventory", product: @product %>
+        </div>
+      </div>
+    </div>
 
-    <% if user_signed_in? && Current.user&.admin?%>
-      <%= link_to "Edit", [:edit, @product] %><br> 
-      <%= link_to "Show Subscribers", admin_product_subscribers_path(@product) %><br> 
-      <%= button_to "Delete", @product, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-    <% end %>
-  </section>
-</section>
+
+
+    <div class="col-md-4">
+      <% if user_signed_in? && Current.user&.admin? %>
+        <div class="card">
+          <div class="card-header">
+            <h5>Admin Actions</h5>
+          </div>
+          <div class="card-body">
+            <%= link_to "Edit Product", [:edit, @product], class: "btn btn-primary w-100 mb-2" %>
+            <%= link_to "Show Subscribers", admin_product_subscribers_path(@product), class: "btn btn-info w-100 mb-2" %>
+            <%= button_to "Delete Product", @product, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-danger w-100" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 

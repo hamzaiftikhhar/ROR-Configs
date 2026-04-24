@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :subscribers, only: [:index]
     end
 
-    resources :passwords, param: :token     # This creates routes for password management, using a token as the parameter for identifying the password reset request.
+    resources :passwords, param: :token    #is devise using it? the 
 
     resources :products do
       resources :subscribers, only: [ :create],shallow: true # nested routes with path parameters. You can create a subscriber for a specific product.  Only allows create action (noshow, etc.).
