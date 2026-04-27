@@ -65,3 +65,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "pundit", "~> 2.5"
+
+gem "faker", "~> 3.8", groups: [:development, :test]
