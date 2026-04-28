@@ -31,21 +31,23 @@
   <body>
 
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="/">MyApp</a>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container d-flex justify-content-between">
 
-        <div>
-          <% if user_signed_in? %>
-            <span class="text-white me-3"><%= current_user.email %></span>
-            <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-danger" %>
-          <% else %>
-            <%= link_to "Login", new_user_session_path, class: "btn btn-success me-2" %>
-            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
-          <% end %>
-        </div>
-      </div>
-    </nav> 
+    <a class="navbar-brand" href="/">MyApp</a>
+
+    <div>
+      <% if user_signed_in? %>
+        <span class="text-white me-3"><%= current_user.email %></span>
+        <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-danger" %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "btn btn-success me-2" %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+
+  </div>
+</nav>
     <!-- navbar ends here -->
 
     <!-- FLASH MESSAGES -->
